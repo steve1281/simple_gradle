@@ -4,11 +4,17 @@
 reference : https://www.youtube.com/watch?v=-dtcEMLNmn0
 
 
-# initialise
+# Initialize
+
+## git
 
 ```
 git init
+```
 
+## gradle
+
+```
 gradle init
 
 steve@minty:~/projects/simple_gradle$ gradle init
@@ -31,7 +37,11 @@ Generate build using new APIs and behavior (some features may change in the next
 
 
 Project name (default: simple_gradle): gradle-tutorial
+```
 
+## Directory structure
+
+```
 steve@minty:~/projects/simple_gradle$ tree
 .
 ├── build.gradle
@@ -49,7 +59,7 @@ steve@minty:~/projects/simple_gradle$ tree
 
 ```
 
-Grab a local gradle env:
+## Build test (Just creates a local gradle env):
 
 ```
 steve@minty:~/projects/simple_gradle$ ./gradlew
@@ -58,7 +68,10 @@ Downloading https://services.gradle.org/distributions/gradle-7.4.1-bin.zip
 
 ```
 
-## tasks?
+## What are gradle tasks
+
+
+### List available tasks
 
 ```
 steve@minty:~/projects/simple_gradle$ ./gradlew tasks
@@ -95,14 +108,14 @@ BUILD SUCCESSFUL in 748ms
 steve@minty:~/projects/simple_gradle$ 
 ```
 
-Project has a build script, scripts have tasks.
+* Project has a build script, scripts have tasks.
 
-Run a task : ./gradlew <task name>
+* Run a task : ./gradlew <task name>
 
 
-PLUGIN - applied to add tasks
+* We use plugins in the build script to add tasks
 
-## groovy
+### About groovy
 
 
 runs on JVM
@@ -126,7 +139,7 @@ myClosure()
 But you don't really need to know much.
 
 
-## the build script
+## The build script
 
 ```
 Put your classes in 
@@ -153,7 +166,7 @@ steve@minty:~/projects/simple_gradle$
 
 ```
 
-## what did we get?
+### Latest directory structure
 
 ```
 
@@ -204,7 +217,7 @@ steve@minty:~/projects/simple_gradle$ tree
 ```
 
 
-## run?
+### Can't run the jar yet:
 
 ```
 steve@minty:~/projects/simple_gradle$ java -jar build/libs/gradle-tutorial.jar 
@@ -240,7 +253,7 @@ jar {
 }
 ```
 
-Re-build:
+### Re-build:
 
 ```
 steve@minty:~/projects/simple_gradle$ ./gradlew build
@@ -250,7 +263,7 @@ BUILD SUCCESSFUL in 1s
 
 ```
 
-And run again.
+### Run again.
 
 ```
 steve@minty:~/projects/simple_gradle$ java -jar build/libs/gradle-tutorial.jar 
@@ -286,7 +299,7 @@ public class GradleTutorialTest {
 
 NOTE: org.junit doesn't come automatically; gradle has to download for us.
 
-## add dependecy to build
+### Add dependency to build
 
 ```
 steve@minty:~/projects/simple_gradle$ vim build.gradle 
@@ -311,7 +324,7 @@ dependencies {
 
 ```
 
-## re-run build
+### Re-run build
 
 ```
 steve@minty:~/projects/simple_gradle$ ./gradlew build
@@ -320,7 +333,7 @@ BUILD SUCCESSFUL in 1s
 4 actionable tasks: 2 executed, 2 up-to-date
 ```
 
-View the report:
+### View the report:
 
 ```
 steve@minty:~/projects/simple_gradle$ firefox build/reports/tests/test/index.html

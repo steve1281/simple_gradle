@@ -1,7 +1,7 @@
-# 
+# Notes on installing Gradle
 
 
-## right java version
+## Verify the Java  version 
 
 * you need java 8 or above.
 
@@ -14,33 +14,29 @@ OpenJDK Runtime Environment (build 17.0.2+8-Ubuntu-120.04)
 OpenJDK 64-Bit Server VM (build 17.0.2+8-Ubuntu-120.04, mixed mode, sharing)
 ```
 
-## install
+## Installing
 
 * https://gradle.org/install/
 
-And what a lot of crud.  So - website talks about SDKMAN! which I don't have and don't want. Other links talk about snap, which I don't have and dont wan't.  
+The site will direct you to us a package mananger (SDKMAN!).  While this is a handy tool, I choose to not.
 
-I am not saying they are not amazing tools, I just dont see why I would undertake installing a tool so I can install a tool.
-
-What we do have, of course, is apt-get.
-
-Which will give us gradle from 2012.  So thats not helpful.
-Oh, remove this old version, or you will have path issues later (I did)
+* Remove any apt installed gradle
 
 ```
 sudo apt-get remove gradle
 ```
 
-
-Lets do it manually (which means we probably should get sdk? I dunno).
+* Manually installing
 
 First note the latest version is 7.4.1  ; YMMV.
 
-So grab that:
+### Download
 
 ```
 steve@minty:~/projects/simple_gradle$ export VERSION=7.4.1
+
 steve@minty:~/projects/simple_gradle$ wget https://services.gradle.org/distributions/gradle-${VERSION}-bin.zip -P /tmp
+
 --2022-03-12 08:48:10--  https://services.gradle.org/distributions/gradle-7.4.1-bin.zip
 Resolving services.gradle.org (services.gradle.org)... 104.18.190.9, 104.18.191.9, 2606:4700::6812:bf09, ...
 Connecting to services.gradle.org (services.gradle.org)|104.18.190.9|:443... connected.
@@ -57,13 +53,13 @@ Saving to: ‘/tmp/gradle-7.4.1-bin.zip’
 
 ```
 
-And install:
+### Unzip 
 
 ```
 sudo unzip -d /opt/gradle /tmp/gradle-${VERSION}-bin.zip
 ```
 
-Check:
+### Quick Check (you can skip this)
 
 ```
 steve@minty:~/projects/simple_gradle$ /opt/gradle/gradle-${VERSION}/bin/gradle --version
@@ -82,13 +78,14 @@ JVM:          17.0.2 (Private Build 17.0.2+8-Ubuntu-120.04)
 OS:           Linux 5.4.0-91-generic amd64
 ```
 
-Set a link to it:
+### Set a link to it:
 
 ```
 sudo ln -s /opt/gradle/gradle-${VERSION} /opt/gradle/latest
 ```
 
-Cretae script
+### Create script
+
 
 ```
 steve@minty:~/projects/simple_gradle$ sudo ed /etc/profile.d/gradle.sh
@@ -101,12 +98,14 @@ wq
 77
 ```
 
+### Make it executable 
+
 ```
 sudo chmod +x /etc/profile.d/gradle.sh
 source /etc/profile.d/gradle.sh
 ```
 
-And check:
+### And check:
 
 ```
 steve@minty:~/projects/simple_gradle$ gradle -v

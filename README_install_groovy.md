@@ -1,39 +1,10 @@
-# 
+# Installing later version of groovy
 
-## yah, I give up....
+Groovy is the scripting langauge that gradle uses.  
 
-gonna install SDKMAN!
+## The default groovy is old
 
-```
-$ curl -s get.sdkman.io | bash
-Follow the instructions on-screen to complete installation.
-
-Open a new terminal or type the command:
-
-$ source "$HOME/.sdkman/bin/sdkman-init.sh"
-Then install the latest stable Groovy:
-
-$ sdk install groovy
-After installation is complete and you’ve made it your default version, test it with:
-
-$ groovy --version
-
-
-```
-
-
-## test
-
-```
-steve@minty:~/projects/simple_gradle$ ./simple_goove.groovy 
-hello
-
-steve@minty:~/projects/simple_gradle$ cat ./simple_goove.groovy
-#!/usr/bin/env groovy
-println "hello" 
-```
-
-## before 
+The groovy (YMMV) I had was out of date and was printing errors:
 
 ```
 steve@minty:~/projects/simple_gradle$ groovy --version
@@ -43,13 +14,38 @@ WARNING: Please consider reporting this to the maintainers of org.codehaus.groov
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
 Groovy Version: 2.4.17 JVM: 11.0.13 Vendor: Ubuntu OS: Linux
-```
-
-## after
 
 ```
+
+
+## Install a package manager
+
+For this experiment, I decided to install `SDKMAN!`.
+
+```
+$ curl -s get.sdkman.io | bash
+$ source "$HOME/.sdkman/bin/sdkman-init.sh"
+```
+
+## Install/Test groovy
+
+```
+$ sdk install groovy
+
+$ groovy --version
+
 steve@minty:~/projects/simple_gradle$ groovy --version
 Groovy Version: 4.0.1 JVM: 17.0.2 Vendor: Private Build OS: Linux
 ```
 
 
+## Simple test
+
+```
+steve@minty:~/projects/simple_gradle$ ./simple_goove.groovy 
+hello
+
+steve@minty:~/projects/simple_gradle$ cat ./simple_goove.groovy
+#!/usr/bin/env groovy
+println "hello" 
+```

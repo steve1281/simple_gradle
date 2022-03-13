@@ -1,10 +1,10 @@
 # Get Java working and test
 
-A brief diversion, setting up java to run on my linux box.
+Setting up java to run on my linux box.
 
-## get java
+## Get java
 
-* there are two java, Oracle and OpenJDK
+* there are two major java "forks", Oracle and OpenJDK
 * use openJDK: https://openjdk.java.net/projects/jdk/
 * install the latest GA (general availability) 
 * on minty linux, thats :
@@ -39,10 +39,10 @@ steve@minty:~/Desktop$ java --version
 openjdk 17.0.2 2022-01-18
 OpenJDK Runtime Environment (build 17.0.2+8-Ubuntu-120.04)
 OpenJDK 64-Bit Server VM (build 17.0.2+8-Ubuntu-120.04, mixed mode, sharing)
-steve@minty:~/Desktop$ sudo update-alternatives --config java
 ```
 
-* test installation
+Test installation
+
 
 ```
   479  cd projects/
@@ -53,7 +53,7 @@ steve@minty:~/Desktop$ sudo update-alternatives --config java
   
 ```
 
-* Create this file:
+Create this file:
 
 steve@minty:~/projects/java_hello$ cat ./com/test777767ont/HelloWorld.java 
 
@@ -67,7 +67,7 @@ public class HelloWorld {
 }
 ```
 
-* generate the bytecode
+Generate the bytecode (compile)
 
 ```
 
@@ -82,7 +82,7 @@ steve@minty:~/projects/java_hello$ tree
 2 directories, 2 files
 ```
 
-* run
+Run
 
 ```
 steve@minty:~/projects/java_hello$ java com.test777767ont.HelloWorld
@@ -90,7 +90,7 @@ Hello world.
 
 ```
 
-### the classpath discussion
+### CLASSPATH notes
 
 This is one of the most annoying things in Java, and it trips up a lot of new programmers.
 
@@ -105,9 +105,10 @@ steve@minty:~/projects/java_hello$ java  -cp . com.test777767ont.HelloWorld
 Hello world.
 ```
 
-Where the -cp prepends the classpath.  (class path can also be set via variable CLASSPATH).
+Where the -cp prepends the classpath.  (class path can also be set via an environment variable CLASSPATH).
 
-The thing that catches folks is that Java expects a directory stucture. So you don't give a path to the class but to the top/root of its structure.
+The thing that catches folks is that Java expects a directory stucture. 
+So you don't give a path to the class but to the top/root of its structure.
 
 Well, it annoyed me anyway.
 
